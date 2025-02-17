@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Report Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <i class="fas fa-microscope"></i>
+                <span>MedReport Analyzer</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="upload-section" id="uploadSection">
+            <h1>Medical Report Analysis</h1>
+            <p class="subtitle">Upload your medical report for comprehensive analysis</p>
+            
+            <form id="uploadForm" class="upload-form">
+                <div class="file-drop-area">
+                    <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg" hidden>
+                    <label for="fileInput" class="file-label">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Drag & Drop or Click to Upload</span>
+                        <span class="file-types">Supported formats: PDF, PNG, JPG</span>
+                    </label>
+                </div>
+                <button type="submit" class="upload-btn" disabled>
+                    <i class="fas fa-upload"></i> Analyze Report
+                </button>
+            </form>
+            
+            <div id="loading" class="loading-spinner hidden">
+                <div class="spinner"></div>
+                <p>Analyzing your report...</p>
+            </div>
+        </section>
+
+        <section id="resultsSection" class="results-section hidden">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="parsed">
+                    <i class="fas fa-file-medical-alt"></i> Report Details
+                </button>
+                <button class="tab-btn" data-tab="visualizations">
+                    <i class="fas fa-chart-line"></i> Visualizations
+                </button>
+                <button class="tab-btn" data-tab="insights">
+                    <i class="fas fa-lightbulb"></i> Insights
+                </button>
+                <button class="tab-btn" data-tab="chat">
+                    <i class="fas fa-comments"></i> Chat Assistant
+                </button>
+            </div>
+
+            <div class="tab-content">
+                <div id="parsed" class="tab-pane active">
+                    <div class="report-grid">
+                        <div class="report-card">
+                            <h3><i class="fas fa-user"></i> Patient Information</h3>
+                            <div id="patientInfo" class="info-grid"></div>
+                        </div>
+                        
+                        <div class="report-card">
+                            <h3><i class="fas fa-hospital"></i> Laboratory Information</h3>
+                            <div id="labInfo" class="info-grid"></div>
+                        </div>
+                        
+                        <div class="report-card full-width">
+                            <h3><i class="fas fa-flask"></i> Test Results</h3>
+                            <div id="testResults" class="results-table"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="visualizations" class="tab-pane">
+                    <div id="plotsGrid" class="plots-grid"></div>
+                </div>
+
+                <div id="insights" class="tab-pane">
+                    <div id="insightsContainer" class="insights-grid"></div>
+                </div>
+
+                <div id="chat" class="tab-pane">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <select id="userRole" class="role-select">
+                                <option value="patient">I am a Patient</option>
+                                <option value="doctor">I am a Doctor</option>
+                            </select>
+                        </div>
+                        <div id="chatMessages" class="chat-messages"></div>
+                        <div class="chat-input-container">
+                            <input type="text" id="chatInput" placeholder="Ask about your report...">
+                            <button id="sendMessage">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
