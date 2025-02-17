@@ -214,6 +214,60 @@ body {
     text-align: left;
 }
 
+/* Add these styles to your existing CSS */
+.plot-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--card-shadow);
+}
+
+.plot-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+/* Add styles for insights display */
+.insights-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 1rem;
+}
+
+.insights-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.insights-section {
+    margin-bottom: 1rem;
+}
+
+.insights-section h4 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.insights-section ul {
+    list-style-type: none;
+    padding-left: 1rem;
+}
+
+.insights-section ul li {
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.insights-section ul li:before {
+    content: "•";
+    color: var(--accent-color);
+    position: absolute;
+    left: -1rem;
+}
+
 .plots-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));

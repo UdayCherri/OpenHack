@@ -174,8 +174,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 plotDiv.className = 'plot-item';
                 
                 const img = document.createElement('img');
-                img.src = `/static/plots/${param.replace(/\s+/g, '_')}.png`;
+                const paramFileName = param.replace(/[^a-zA-Z0-9]/g, '_');
+                img.src = `/static/plots/${paramFileName}.png`;
                 img.alt = `${param} Plot`;
+                img.onerror = () => {
+                    console.error(`Failed to load plot for ${param}`);
+                    plotDiv.remove();
+                };
                 
                 plotDiv.appendChild(img);
                 container.appendChild(plotDiv);
